@@ -11,26 +11,39 @@ const UserListing = () => {
   useEffect(() => {
     getUsers();
   }, []);
-
+  const handleRemove = (id) => {
+    console.log(id);
+    const filterUser = users.filter((user) => user.id !== id);
+    setUsers(filterUser);
+    alert(`User ${id} remove`);
+  };
   return (
     <div>
       <div>
-        <Link to={"/add-edit-user"}>
+        <Link to={"/add-new-user"}>
           <button>Add new user</button>
         </Link>
       </div>
-      <div>
+      <div className="flex flex-wrap">
         {users.map((user) => {
           return (
-            <div>
+            <div
+              className="bg-stone-50 p-5 m-5 rounded-md shadow-md"
+              key={user.id}
+            >
               <div>
-                <div>
-                  <h3>
+                <div className="flex justify-between">
+                  <h3 className="font-bold">
                     {user.id}. {user.name}
                   </h3>
-                  <Link to={`/add-edit-user/${user.id}`}>
-                    <i className="fas fa-pencil"></i>
-                  </Link>
+                  <div className="flex gap-5">
+                    <Link to={`/add-edit-user/${user.id}`}>
+                      <i className="fa-regular fa-pen-to-square"></i>
+                    </Link>
+                    <button onClick={() => handleRemove(user.id)}>
+                      <i className="fa-solid fa-trash"></i>
+                    </button>
+                  </div>
                 </div>
                 <div>
                   <p>Username: {user.name}</p>
