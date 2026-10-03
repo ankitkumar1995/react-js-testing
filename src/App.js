@@ -7,17 +7,12 @@ import img1 from "./images/shrikrishna.jpg";
 import PujaSliderSection from "./PujaSliderSection";
 function App() {
   return (
-    <>
-      <PujaSliderSection />
-
-      <PujaSection />
-    </>
-    // <BrowserRouter>
-    //   <Routes>
-    //     <Route path="/" element={<UserListing />} />
-    //     <Route path="/add-new-user" element={<AddAndEditForm />} />
-    //   </Routes>
-    // </BrowserRouter>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<UserListing />} />
+        <Route path="/add-new-user" element={<AddAndEditForm />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
